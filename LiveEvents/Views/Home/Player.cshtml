@@ -1,0 +1,112 @@
+﻿
+@{
+    ViewData["Title"] = "Player";
+}
+
+
+<link href="//amp.azure.net/libs/amp/2.3.5/skins/amp-default/azuremediaplayer.min.css" rel="stylesheet">
+<script src="//amp.azure.net/libs/amp/2.3.5/azuremediaplayer.min.js"></script>
+
+<style>
+
+    h1 {
+        text-align: center;
+    }
+</style>
+
+
+<!--  app insights page view code -->
+<script type="text/javascript">
+    var sdkInstance = "appInsightsSDK"; window[sdkInstance] = "appInsights"; var aiName = window[sdkInstance], aisdk = window[aiName] || function (n) { var o = { config: n, initialize: !0 }, t = document, e = window, i = "script"; setTimeout(function () { var e = t.createElement(i); e.src = n.url || "https://az416426.vo.msecnd.net/scripts/b/ai.2.min.js", t.getElementsByTagName(i)[0].parentNode.appendChild(e) }); try { o.cookie = t.cookie } catch (e) { } function a(n) { o[n] = function () { var e = arguments; o.queue.push(function () { o[n].apply(o, e) }) } } o.queue = [], o.version = 2; for (var s = ["Event", "PageView", "Exception", "Trace", "DependencyData", "Metric", "PageViewPerformance"]; s.length;)a("track" + s.pop()); var r = "Track", c = r + "Page"; a("start" + c), a("stop" + c); var u = r + "Event"; if (a("start" + u), a("stop" + u), a("addTelemetryInitializer"), a("setAuthenticatedUserContext"), a("clearAuthenticatedUserContext"), a("flush"), o.SeverityLevel = { Verbose: 0, Information: 1, Warning: 2, Error: 3, Critical: 4 }, !(!0 === n.disableExceptionTracking || n.extensionConfig && n.extensionConfig.ApplicationInsightsAnalytics && !0 === n.extensionConfig.ApplicationInsightsAnalytics.disableExceptionTracking)) { a("_" + (s = "onerror")); var p = e[s]; e[s] = function (e, n, t, i, a) { var r = p && p(e, n, t, i, a); return !0 !== r && o["_" + s]({ message: e, url: n, lineNumber: t, columnNumber: i, error: a }), r }, n.autoExceptionInstrumented = !0 } return o }(
+        {
+            instrumentationKey: "d2ef4ecb-0fff-ff0c-9173-27a348026d6d",
+
+            endpointUrl: "https://dc.applicationinsights.us/v2/track"
+        }
+    ); (window[aiName] = aisdk).queue && 0 === aisdk.queue.length && aisdk.trackPageView({});
+</script>
+
+
+
+<script type="text/javascript">
+    var id = window.location.href;
+    id = id.substring(id.lastIndexOf('?') + 1);
+
+    //  #################################################
+    //  ##   Split URL variables into an Array        ###
+    //  #################################################
+    var res = id.split("&");
+    var url = res[0];
+    var pic = res[1];
+    var cc = res[2];
+
+
+    //  ############################################################
+    //  ###  This section removes all the  names and equal signs  ##
+    //  ###    And assigns them to variables                      ##
+    //  ############################################################
+    var url1 = url.substring(url.lastIndexOf('=') + 1); // url
+    //if (!url1) { url1 = "How to upload movie url"; }  //I would like to get this working
+
+    var pic1 = pic.substring(pic.lastIndexOf('=') + 1);  //pic
+    var cc1 = cc.substring(cc.lastIndexOf('=') + 1);  //cc
+
+    //    var ccS1 = ccS.substring(ccS.lastIndexOf('=') + 1);  //cc spanish
+
+    var part1 = "<video id=\"azuremediaplayer\"";
+    part1 = part1 + "class=\"azuremediaplayer amp-default-skin amp- big - play - centered\"";
+    part1 = part1 + "autoplay controls width=\"960\" height=\"720\"";
+    part1 = part1 + "poster=";
+    part1 = part1 + pic1;
+
+    part1 = part1 + "  data-setup='{}'";
+    part1 = part1 + "  tabindex=\"0\">";
+
+    var part2 = "<source src=\"";
+    part2 = part2 + url1;
+    part2 = part2 + "\" type=\"application/ vnd.ms - sstr + xml\" />";
+    //CC stuff
+    part2 = part2 + " <track kind=\"subtitles\"";
+    part2 = part2 + " src=\"";
+    part2 = part2 + cc1;
+    part2 = part2 + "\" label=\"English\">";
+
+
+
+</script>
+
+
+<h1>Welcome to Live Events</h1>
+<Center>
+    <img src="~/DHS Banner-100.jpg" />
+</Center>
+
+
+
+
+
+<div class="divTable" style="width: 80%;margin: auto;border: 0px solid #000;">
+    <div class="divTableBody">
+        <div class="divTableRow">
+            <div class="divTableCell">
+
+                <!-- Stream URL -->
+                <script>document.write(part1);</script>
+
+                <script>document.write(part2);</script>
+
+                <p class="amp-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that supports HTML5 video</p>
+                </video>
+                <br />
+
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
